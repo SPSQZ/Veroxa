@@ -1,0 +1,25 @@
+[
+  {
+    "test_id": "TC001",
+    "test_name": "Perfect Product Match",
+    "description": "Delivered product matches the original listing.",
+    "listing": {
+      "title": "Mint Condition Rare Holographic Card",
+      "metadata": {
+        "color": "Holo-Prismatic",
+        "wear_tier": "None",
+        "creases": false
+      }
+    },
+    "delivered_product": {
+      "color": "Holo-Prismatic",
+      "wear_tier": "None",
+      "creases": false
+    },
+    "expected_result": "MATCH",
+    "expected_action": "RELEASE",
+    "reason": "All product properties match the original listing."
+  }
+]
+
+  
