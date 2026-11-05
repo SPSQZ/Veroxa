@@ -1,138 +1,260 @@
 # Veroxa: Semantic Product-Matching Escrow Bot
+### Evidence-Led Marketplace Dispute Resolution & Safe Escrow Adjudication
 
 [![GitHub branch](https://img.shields.io/badge/branch-main-indigo.svg)](https://github.com/SPSQZ/Veroxa)
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6-purple.svg)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38bdf8.svg)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Architecture: Multi--Agent--Hybrid](https://img.shields.io/badge/Architecture-Hybrid%20AI%20%2B%20Escrow-emerald.svg)](#system-architecture)
+[![Frontend: React + Vite](https://img.shields.io/badge/Frontend-React%20%7C%20Vite%20%7C%20Tailwind-38bdf8.svg)](frontend/)
 
-An evidence-led assistant and adjudication console that compares buyer dispute claims against original marketplace listings, order facts, photos, messages, and return terms to resolve disputes fairly before an escrow release or refund decision.
-
-> **Golden Design Principle:**  
-> *The bot recommends; it does not silently make irreversible financial decisions. Every recommendation links directly back to the evidence and marketplace policy used, requiring authorized human sign-off for smart escrow release.*
+**Veroxa** is an intelligent, evidence-grounded dispute resolution assistant designed for peer-to-peer and multi-vendor marketplaces. It cross-examines buyer claims against original listing specifications, order details, high-resolution photo evidence, chat transcripts, and marketplace return policies to adjudicate disputes fairly before funds are released from escrow.
 
 ---
 
-## Member 3: Frontend & Reviewer Experience Lead
+## 🎯 Executive Summary & Core Principle
 
-This repository contains the client-side architecture and interactive reviewer experience designed to eliminate cognitive fatigue and provide an **evidence-first review workflow**.
+In e-commerce marketplaces, disputes surrounding *"Item Not as Described"*, wrong variants, missing bundled accessories, and counterfeit goods are often slow, costly, and subjective. Veroxa transforms this process into a transparent, auditable, and automated investigation workflow.
 
-### Key Deliverables Implemented
-
-1. **Reviewer Inspection Workbench (`/review/:caseId`):**
-   * **Semantic Attribute Matrix:** Side-by-side comparison of original listing specifications against claimed/received item attributes (Silhouette, SKU, Colorway, Size, Accessories, Condition) with live `MATCH`, `MISMATCH`, and `UNVERIFIED` tags.
-   * **Multi-Modal Evidence Dock:** Tabbed viewer featuring:
-     * *Visual & OCR Proof:* Zoomable lightbox image viewer with computer-vision anomaly overlays.
-     * *Chat Logs:* Authenticated buyer/seller pre-dispute message excerpts.
-     * *Marketplace Return Policy:* Direct section-level citations and policy relevance scores.
-   * **AI Recommendation & Citations Card:** Advisory verdict banner, dynamic confidence meter, semantic similarity metric, model version audit stamp, and uncertainty drivers.
-   * **Chronological Escrow Timeline:** Immutable audit log tracking state transitions from order creation through dispute intake, AI generation, and reviewer actions.
-   * **Human-in-the-Loop Adjudication Controls:**
-     * `Confirm & Execute`: Adopts AI recommendation and transitions simulated smart escrow states (`HELD`, `UNDER_REVIEW`, `REFUNDED`, `RELEASED`).
-     * `Request Evidence`: Dispatches itemized requests to buyer, seller, or both, placing escrow in `AWAITING_EVIDENCE`.
-     * `Override AI`: Mandatory modal requiring structured override categories and immutable justification audit notes.
-
-2. **Dispute Queue & Metrics Dashboard (`/review`):**
-   * High-level operational metrics: Locked Escrow Value, Active Case Volume, Human Escalations, and Average Confidence.
-   * Filterable dispute table (All, Under Review, Escalated / Low Confidence, Resolved) with search by SKU, case ID, or user.
-
-3. **Buyer Dispute Intake Wizard (`/dispute/new`):**
-   * Step-by-step submission flow capturing order facts, dispute categories (`Not as described`, `Wrong item`, `Missing parts`, `Counterfeit`, `Damaged`), narrative statements, and drag-and-drop evidence proof.
-
-4. **Seller Rebuttal Portal (`/dispute/:id/respond`):**
-   * Dedicated interface for sellers to review buyer accusations, submit counter-statements, and attach warehouse packing records.
-
-5. **Resilience & State Handling:**
-   * **Low-Confidence Warning Banner:** Prominent amber/red banner when confidence is below 70% or evidence is contradictory, enforcing human escalation.
-   * **Zero-Dependency Mock Data Engine:** 4 pre-configured synthetic cases for live judging demos:
-     * `CASE-8091`: Clear Mismatch (Nike Dunk Panda vs. Air Force 1 White — 94% Confidence Refund).
-     * `CASE-8092`: Missing Essential Accessory (Sony WH-1000XM5 without travel case — 86% Partial Refund).
-     * `CASE-8093`: Ambiguous Dial Authenticity (Vintage Omega Seamaster — 44% Low Confidence, Mandatory Human Escalation).
-     * `CASE-8094`: Counterfeit Replica Suspected (Gucci GG Marmont Bag — 89% Zero-Tolerance Refund).
+> ⚖️ **The Golden Design Principle:**  
+> **The bot recommends; it never makes silent, irreversible financial decisions.**  
+> Every recommendation produced by the AI engine links directly back to verified evidence artifacts and versioned marketplace policy clauses. Irreversible financial actions (such as escrow payout or buyer refund) strictly require authorized human reviewer confirmation or audited override.
 
 ---
 
-## Repository Structure
+## 🏛️ System Architecture & Workflow
 
-```text
-Veroxa/
-├── README.md                      # Project overview and setup instructions
-├── .gitattributes
-├── LICENSE
-└── frontend/                      # Client-side React 18 + Vite + Tailwind v4 application
-    ├── package.json
-    ├── vite.config.ts
-    ├── tsconfig.json
-    ├── tsconfig.app.json
-    ├── index.html
-    └── src/
-        ├── main.tsx               # Application entrypoint
-        ├── App.tsx                # Master view router & toast notifications
-        ├── index.css              # Tailwind CSS styles
-        ├── types/
-        │   ├── dispute.ts         # Types for disputes, evidence, AI recommendations
-        │   └── escrow.ts          # Simulated escrow states & badge configurations
-        ├── services/
-        │   ├── mockData.ts        # 4 balanced synthetic benchmark scenarios
-        │   └── disputeStore.ts    # Reactive state store with local persistence
-        └── components/
-            ├── common/
-            │   ├── Header.tsx     # Brand banner, view switcher, demo scenario selector
-            │   └── Badge.tsx      # Escrow state, match status, and outcome badges
-            ├── review/
-            │   ├── ReviewerWorkbench.tsx  # Core 3-panel reviewer workspace
-            │   ├── CaseQueue.tsx          # Dispute queue and operational metrics
-            │   ├── AttributeMatrix.tsx    # Side-by-side spec comparison table
-            │   ├── EvidenceViewer.tsx     # Photos, OCR, chat logs, and policy tabs
-            │   ├── RecommendationCard.tsx # AI confidence gauge & citations
-            │   ├── EscrowTimeline.tsx     # Chronological audit & state change log
-            │   └── ActionControls.tsx     # Confirm, Request Evidence, and Override modal
-            └── intake/
-                ├── BuyerDisputeForm.tsx   # Multi-step dispute intake wizard
-                └── SellerResponsePortal.tsx # Seller rebuttal submission interface
+```mermaid
+flowchart TD
+    subgraph Intake_Layer["1. Dispute & Evidence Intake"]
+        UI_Buyer["Buyer Dispute Wizard<br/>(Claims, Photos, Unboxing OCR)"]
+        UI_Seller["Seller Rebuttal Portal<br/>(Proof of Packout, Invoices)"]
+        DB_Order["Order & Listing Database<br/>(SKU, Photos, Attributes)"]
+    end
+
+    subgraph Orchestration["2. Backend API & Normalizer"]
+        API["Backend API & Auth"]
+        Normalizer["Data Normalizer & Privacy Filter"]
+        Audit["Immutable Audit Log"]
+    end
+
+    subgraph AI_Engine["3. Semantic & Hybrid Matching Engine"]
+        Text_Embed["Text Embeddings<br/>(Title, Specs, Claim Narrative)"]
+        Vision_Embed["Vision & OCR Verification<br/>(Barcode, Serial, Silhouette)"]
+        Attr_Matrix["Exact Attribute Matcher<br/>(Model, Size, Color, Accessories)"]
+        Vector_Index["Vector Database & Catalog Index"]
+    end
+
+    subgraph Policy_Layer["4. Policy & Decision Engine"]
+        Policy_Rules["Marketplace Policy Rules (§4.1, §7.3, §9.2)"]
+        Confidence_Gate{"Confidence Score<br/>&ge; 70% Threshold?"}
+        Rec_Draft["Ground Recommendation<br/>+ Evidence Citations"]
+        Escalate_Flag["Mandatory Escalation Flag<br/>(Ambiguous / Low Confidence)"]
+    end
+
+    subgraph Reviewer_Workspace["5. Human-in-the-Loop Reviewer Workbench"]
+        Console["Reviewer Inspection Console<br/>(Attribute Diff, Evidence Dock, Timeline)"]
+        Human_Action{"Reviewer Sign-off"}
+        Confirm["Confirm Proposal"]
+        Override["Log Override + Justification"]
+        Req_Evidence["Request Additional Evidence"]
+    end
+
+    subgraph Escrow_Boundary["6. Simulated Smart Escrow"]
+        Escrow_Machine["Escrow State Machine<br/>(HELD &rarr; UNDER_REVIEW &rarr; REFUNDED / RELEASED)"]
+    end
+
+    %% Flows
+    UI_Buyer --> API
+    UI_Seller --> API
+    DB_Order --> API
+    API --> Normalizer
+    Normalizer --> Audit
+    Normalizer --> Text_Embed & Vision_Embed & Attr_Matrix
+    Text_Embed & Vision_Embed --> Vector_Index
+    Vector_Index & Attr_Matrix --> Confidence_Gate
+
+    Confidence_Gate -- "Yes (&ge;70%)" --> Rec_Draft
+    Confidence_Gate -- "No (<70% or Conflict)" --> Escalate_Flag
+    Rec_Draft & Escalate_Flag --> Policy_Rules
+    Policy_Rules --> Console
+
+    Console --> Human_Action
+    Human_Action --> Confirm & Override & Req_Evidence
+    Confirm & Override --> Escrow_Machine
+    Req_Evidence --> Escrow_Machine
+    Escrow_Machine --> Audit
 ```
 
 ---
 
-## Quick Start (Local Setup)
+## 👥 Team Workstreams & Module Breakdown
 
-### Prerequisites
-* **Node.js** (v18+ or v20+)
-* **npm** (v9+)
+The Veroxa platform is partitioned across four specialized technical leads:
 
-### Installation & Run
+### 1. AI & Semantic Matching Lead (Member 1)
+* **Text Embeddings & Vector Search:** Embedding generation for catalog items, dispute statements, and return criteria.
+* **Hybrid Matching Logic:** Blends cosine vector similarity with deterministic checks across SKU, brand, model code, size, color, item condition, and bundled accessories.
+* **Multi-Modal Vision & OCR:** Visual anomaly detection, box label barcode OCR extracts, and serial number cross-referencing.
+* **Test Fixtures:** Benchmarks handling edge cases like deceptive paraphrasing, near-duplicate listings, wrong variants, and ambiguous descriptions.
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
+### 2. Backend, Data & Escrow Workflow Lead (Member 2)
+* **Relational Data Layer:** Database schemas for users, listings, orders, disputes, evidence bundles, and audit records.
+* **Dispute Orchestrator API:** RESTful endpoints for dispute ingestion, evidence processing, semantic scoring, reviewer decisions, and chronological history.
+* **Simulated Escrow State Machine:** Strict, guarded transitions preventing unauthorized or out-of-order financial state modifications.
+* **Access Control & Privacy:** Role-based access control (RBAC), file upload sanitation, and data minimization.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 3. Frontend & Reviewer Experience Lead (Member 3)
+* **Reviewer Inspection Workbench (`/review/:caseId`):**
+  * *Semantic Attribute Matrix:* Side-by-side spec comparison table with `MATCH`, `MISMATCH`, and `UNVERIFIED` indicators.
+  * *Multi-Modal Evidence Dock:* Integrated image lightbox, OCR inspection, chat log transcripts, and policy citations.
+  * *AI Recommendation & Citations Card:* Real-time confidence gauge, policy reasoning summary, and model metadata.
+  * *Chronological Audit & Escrow Timeline:* Event stream logging every participant action and state transition.
+* **Human Adjudication System:** One-click confirmation, multi-party evidence request modal, and mandatory override justification logging.
+* **Parties Intake Interfaces:** Buyer dispute submission wizard (`/dispute/new`) and Seller rebuttal portal (`/dispute/:id/respond`).
+* **Resilience States:** High-visibility low-confidence escalation banners, skeleton loaders, and empty/error handling.
 
-3. Launch development server:
-   ```bash
-   npm run dev
-   ```
+### 4. Evaluation, Safety & Pitch Lead (Member 4)
+* **Synthetic Test Evaluation:** Balanced benchmark dispute suites (clear matches, deliberate mismatches, missing parts, conflicting claims, luxury counterfeits).
+* **Metrics Measurement:** Accuracy tracking for Top-$k$ candidate retrieval, false-match rates, evidence traceability, and latency.
+* **Responsible AI & Safety Audits:** Verification that every recommendation cites exact policy sections and that low-confidence (<70%) disputes are forcibly escalated.
+* **Demonstration & Pitch Packaging:** Live interactive case demos illustrating automated routing, confidence gates, and simulated escrow execution.
 
-4. Open your browser at `http://localhost:5173/` (or the URL shown in terminal).
+---
 
-### Production Build
-To test the production build:
+## 🔒 Simulated Escrow State Machine
+
+Veroxa safeguards funds by modeling a state machine that mirrors smart escrow protocols:
+
+| State | Description | Permitted Transitions |
+| :--- | :--- | :--- |
+| `HELD` | Buyer payment locked in escrow upon order completion. | $\rightarrow$ `UNDER_REVIEW`, `AWAITING_EVIDENCE`, `RELEASED` |
+| `AWAITING_EVIDENCE` | Pending required photos, receipts, or statements from buyer or seller. | $\rightarrow$ `UNDER_REVIEW`, `HELD` |
+| `UNDER_REVIEW` | Semantic comparison completed; case active in Reviewer Workbench. | $\rightarrow$ `RETURN_IN_PROGRESS`, `REFUNDED`, `RELEASED`, `AWAITING_EVIDENCE` |
+| `RETURN_IN_PROGRESS` | Return label generated; escrow remains locked pending return delivery. | $\rightarrow$ `REFUNDED`, `UNDER_REVIEW` |
+| `RELEASED` | Dispute decided in seller's favor (or claim dismissed); funds disbursed to seller. | *Terminal state* |
+| `REFUNDED` | Dispute decided in buyer's favor; funds returned to buyer from escrow. | *Terminal state* |
+
+---
+
+## 📊 Evaluation Benchmarks & Metrics
+
+| Metric | Target | Verification Method in Veroxa |
+| :--- | :---: | :--- |
+| **Top-$k$ Match Accuracy** | $\ge 90\%$ | Correct item/variant ranked at top-1 or top-3 across synthetic dispute callsets. |
+| **False-Match Rate** | $< 5\%$ | Rigorous testing against near-identical variants, subtle counterfeits, and misleading claims. |
+| **Evidence Traceability** | $100\%$ | Every AI proposal contains citations referencing specific evidence items and policy clauses. |
+| **Safety Escalation Gate** | $100\%$ | Any case with confidence $<70\%$ or contradictory evidence is locked from automatic closure and flagged for human review. |
+| **End-to-End Latency** | $< 2.5\text{s}$ | Median duration from evidence intake to vector ranking and grounded recommendation generation. |
+
+---
+
+## 📁 Repository Structure
+
+```text
+Veroxa/
+├── README.md                      # Comprehensive project documentation
+├── LICENSE                        # MIT License
+├── .gitignore                     # Repository-wide ignore rules
+├── .gitattributes
+│
+├── frontend/                      # Web Application (React 18 + Vite + Tailwind v4 + TypeScript)
+│   ├── src/
+│   │   ├── types/                 # Shared data contracts (Dispute, Escrow, Evidence, Policies)
+│   │   │   ├── dispute.ts
+│   │   │   └── escrow.ts
+│   │   ├── services/
+│   │   │   ├── mockData.ts        # 4 balanced benchmark evaluation scenarios
+│   │   │   └── disputeStore.ts    # Reactive state store with audit trail persistence
+│   │   ├── components/
+│   │   │   ├── common/            # Header, Badges, Modals, Scenario Switcher
+│   │   │   ├── review/            # Workbench, Attribute Matrix, Evidence Dock, Timeline, Actions
+│   │   │   └── intake/            # Buyer Dispute Wizard, Seller Rebuttal Portal
+│   │   ├── App.tsx                # Master router and notification container
+│   │   └── main.tsx               # Client entrypoint
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── tsconfig.json
+│
+├── backend/                       # API Service & Dispute Orchestrator (FastAPI / Node.js)
+│   └── (Dispute ingestion, evidence uploads, escrow state manager)
+│
+├── matching/                      # AI & Semantic Matching Engine
+│   └── (Text embeddings, vector search, multi-modal OCR, attribute rule checks)
+│
+├── policy/                        # Marketplace Policy Rules & Decision Gates
+│   └── (Dispute rules, confidence thresholds, citation generator)
+│
+├── database/                      # Relational Schema & State Migrations
+│   └── (Postgres/SQLite schemas, audit event persistence)
+│
+├── sample_data/                   # Synthetic benchmark datasets & test fixtures
+│   └── (Paired listings, buyer photos, unboxing OCR, and chat logs)
+│
+└── tests/                         # Automated test suites
+    └── (Unit tests, attribute matching tests, escrow state transition tests)
+```
+
+---
+
+## 🧪 Included Benchmark Demo Scenarios
+
+The system includes 4 pre-configured synthetic cases representing the core dispute taxonomy:
+
+1. **`CASE-8091` — Clear Wrong Item / Silhouette Mismatch:**
+   * *Claim:* Buyer ordered Nike Dunk Low Panda; package contained Nike Air Force 1 Triple White.
+   * *Analysis:* OCR extracts AF1 box label (`CW2288-111`); computer vision flags midsole discrepancy.
+   * *Outcome:* High Confidence ($94\%$) $\rightarrow$ `REFUND_BUYER` upon return.
+
+2. **`CASE-8092` — Missing Bundled Essential Accessory:**
+   * *Claim:* Sony WH-1000XM5 headphones delivered without the advertised hard travel case and audio cable.
+   * *Analysis:* Listing title explicitly guarantees accessories; unboxing photo proves omission.
+   * *Outcome:* Moderate Confidence ($86\%$) $\rightarrow$ `PARTIAL_REFUND` (\$65 accessory settlement).
+
+3. **`CASE-8093` — Ambiguous High-Value Dial Authenticity:**
+   * *Claim:* Vintage Omega Seamaster (\$1,850); buyer alleges aftermarket redial; seller produces Swiss certificate.
+   * *Analysis:* Macro photos suffer optical distortion; conflicting credentialed claims.
+   * *Outcome:* Low Confidence ($44\%$) $\rightarrow$ **Mandatory Human Escalation Gate triggered under Policy §9.2**.
+
+4. **`CASE-8094` — Counterfeit Luxury Replica:**
+   * *Claim:* Gucci GG Marmont bag; improper serif debossing and incorrect hardware alloy.
+   * *Analysis:* Serial number matches known replica batch in Authenticator Database.
+   * *Outcome:* High Confidence ($89\%$) $\rightarrow$ `REFUND_BUYER` under Anti-Counterfeit Policy §3.4.
+
+---
+
+## 🚀 Quick Start Guide
+
+### Running the Frontend Dashboard
+
 ```bash
+# 1. Navigate to the frontend directory
+cd frontend
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
+```
+
+Visit `http://localhost:5173/` in your browser. You can use the **Demo Scenario Selector** in the header to switch between benchmark cases instantly or submit custom claims via the Buyer and Seller portals.
+
+### Verifying the Production Build
+
+```bash
+cd frontend
 npm run build
 npm run preview
 ```
 
 ---
 
-## Evaluation Benchmark Coverage
+## 🛡️ Responsible AI, Security & Compliance
 
-| Metric | Target | Frontend Implementation |
-| :--- | :--- | :--- |
-| **Evidence Traceability** | 100% | Every recommendation card displays clickable policy citations and matched evidence artifacts. |
-| **Human Escalation** | Gate at $<70\%$ | Cases with confidence below 70% (e.g. Case #8093) automatically disable automatic proposals and render an amber escalation alert. |
-| **Escrow Auditability** | 100% | All state transitions (`HELD` $\rightarrow$ `REFUNDED` / `RELEASED`) and reviewer overrides require mandatory rationale and are appended to the timeline. |
+* **Traceable Auditability:** All model versions, similarity metrics, evidence references, and reviewer overrides are immutably timestamped in the case log.
+* **No Autonomous Funds Movement:** Financial transfers cannot occur without explicit human authorization.
+* **Privacy By Design:** PII (personally identifiable information) is stripped from embeddings; buyer/seller communications remain scoped strictly to case investigators.
 
+---
+
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
