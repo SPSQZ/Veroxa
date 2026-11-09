@@ -1,0 +1,152 @@
+[
+  {
+    "product_id": "SONY-XM5-BLK",
+    "title": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones Black",
+    "description": "Industry-leading noise cancellation with Integrated Processor V1. Up to 30-hour battery. Multipoint connection.",
+    "brand": "Sony",
+    "category": "Headphones",
+    "sku": "SONY-XM5-BLK-001",
+    "model": "WH-1000XM5",
+    "attributes": {"color": "Black", "quantity": 1, "accessories": ["USB-C cable", "Carrying case", "Audio cable"]}
+  },
+  {
+    "product_id": "SONY-XM5-SLV",
+    "title": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones Silver",
+    "description": "Same flagship ANC headphone as WH-1000XM5 Black but in Silver colorway. Complete with case and cables.",
+    "brand": "Sony",
+    "category": "Headphones",
+    "sku": "SONY-XM5-SLV-001",
+    "model": "WH-1000XM5",
+    "attributes": {"color": "Silver", "quantity": 1, "accessories": ["USB-C cable", "Carrying case", "Audio cable"]}
+  },
+  {
+    "product_id": "SONY-XM4-BLK",
+    "title": "Sony WH-1000XM4 Wireless Noise Cancelling Headphones Black",
+    "description": "Previous-generation over-ear Bluetooth headphones with active noise cancellation.",
+    "brand": "Sony",
+    "category": "Headphones",
+    "sku": "SONY-XM4-BLK-001",
+    "model": "WH-1000XM4",
+    "attributes": {"color": "Black", "quantity": 1, "accessories": ["USB-C cable", "Carrying case"]}
+  },
+  {
+    "product_id": "BOSE-QCU-BLK",
+    "title": "Bose QuietComfort Ultra Headphones Black",
+    "description": "Bose's flagship noise-cancelling headphones with Immersive Audio spatial sound.",
+    "brand": "Bose",
+    "category": "Headphones",
+    "sku": "BOSE-QCU-880066-0100",
+    "model": "QC-ULTRA",
+    "attributes": {"color": "Black", "quantity": 1, "accessories": ["USB-C cable", "Audio cable", "Carrying case"]}
+  },
+  {
+    "product_id": "BOSE-QC45-BLK",
+    "title": "Bose QuietComfort 45 Headphones Black",
+    "description": "Balanced ANC headphones with 24-hour battery life.",
+    "brand": "Bose",
+    "category": "Headphones",
+    "sku": "BOSE-QC45-BLACK",
+    "model": "QC45",
+    "attributes": {"color": "Black", "quantity": 1}
+  },
+  {
+    "product_id": "NIKE-DUNK-PND-10",
+    "title": "Nike Dunk Low Retro Panda Black White US 10",
+    "description": "Classic two-tone Dunk Low silhouette in Black and White Panda colorway. Original box included.",
+    "brand": "Nike",
+    "category": "Footwear",
+    "sku": "DD1391-100",
+    "model": "Dunk-Low",
+    "attributes": {"color": "Black/White", "size": "US 10", "condition": "New"}
+  },
+  {
+    "product_id": "NIKE-AF1-WHT-10",
+    "title": "Nike Air Force 1 07 Triple White US 10",
+    "description": "Classic perforated leather Air Force 1 in all-white colorway.",
+    "brand": "Nike",
+    "category": "Footwear",
+    "sku": "CW2288-111",
+    "model": "Air-Force-1",
+    "attributes": {"color": "Triple White", "size": "US 10", "condition": "New"}
+  },
+  {
+    "product_id": "APPLE-MBP-14-M3-512",
+    "title": "Apple MacBook Pro 14-inch M3 Pro 512GB Space Gray",
+    "description": "Powerful 14-inch MacBook Pro with Apple M3 Pro chip, 18GB unified memory, 512GB SSD.",
+    "brand": "Apple",
+    "category": "Laptop",
+    "sku": "MK193LL/A",
+    "model": "MacBook-Pro-14-M3",
+    "attributes": {"color": "Space Gray", "storage": "512GB", "memory": "18GB"}
+  },
+  {
+    "product_id": "APPLE-MBP-14-M3-256",
+    "title": "Apple MacBook Pro 14-inch M3 256GB Space Gray",
+    "description": "MacBook Pro 14 with M3 chip and 256GB SSD. Base configuration.",
+    "brand": "Apple",
+    "category": "Laptop",
+    "sku": "MNW83LL/A",
+    "model": "MacBook-Pro-14-M3-BASE",
+    "attributes": {"color": "Space Gray", "storage": "256GB", "memory": "8GB"}
+  },
+  {
+    "product_id": "APPLE-WATCH-S9-45-BLK",
+    "title": "Apple Watch Series 9 GPS 45mm Midnight Aluminium",
+    "description": "Apple Watch Series 9 with new Double Tap gesture. Always-On Retina display.",
+    "brand": "Apple",
+    "category": "Smartwatch",
+    "sku": "MRMD3LL/A",
+    "model": "Watch-Series9-45",
+    "attributes": {"color": "Midnight", "size": "45mm"}
+  },
+  {
+    "product_id": "APPLE-WATCH-S8-45-BLK",
+    "title": "Apple Watch Series 8 GPS 45mm Midnight Aluminium",
+    "description": "Previous-generation Apple Watch with crash detection and advanced health sensors.",
+    "brand": "Apple",
+    "category": "Smartwatch",
+    "sku": "MNP12LL/A",
+    "model": "Watch-Series8-45",
+    "attributes": {"color": "Midnight", "size": "45mm"}
+  },
+  {
+    "product_id": "PS5-DISC-WHITE",
+    "title": "Sony PlayStation 5 Disc Edition Console White",
+    "description": "PS5 with Ultra HD Blu-ray disc drive. Includes DualSense controller, USB cables.",
+    "brand": "Sony",
+    "category": "Gaming Console",
+    "sku": "CFI-1215A01X",
+    "model": "CFI-1215A",
+    "attributes": {"color": "White", "accessories": ["DualSense controller", "HDMI cable", "USB cable", "power cable"]}
+  },
+  {
+    "product_id": "PS5-DIGITAL-WHITE",
+    "title": "Sony PlayStation 5 Digital Edition Console White",
+    "description": "PS5 without disc drive. All digital game library. Includes DualSense controller.",
+    "brand": "Sony",
+    "category": "Gaming Console",
+    "sku": "CFI-1016B01X",
+    "model": "CFI-1016B",
+    "attributes": {"color": "White", "accessories": ["DualSense controller", "HDMI cable", "USB cable", "power cable"]}
+  },
+  {
+    "product_id": "IPHONE-15-PRO-256-NT",
+    "title": "Apple iPhone 15 Pro 256GB Natural Titanium",
+    "description": "iPhone 15 Pro with titanium design, A17 Pro chip, 48MP camera system.",
+    "brand": "Apple",
+    "category": "Smartphone",
+    "sku": "MTVY3LL/A",
+    "model": "iPhone15Pro",
+    "attributes": {"color": "Natural Titanium", "storage": "256GB"}
+  },
+  {
+    "product_id": "IPHONE-15-PRO-256-BLK",
+    "title": "Apple iPhone 15 Pro 256GB Black Titanium",
+    "description": "iPhone 15 Pro in Black Titanium colorway with A17 Pro chip.",
+    "brand": "Apple",
+    "category": "Smartphone",
+    "sku": "MTV73LL/A",
+    "model": "iPhone15Pro",
+    "attributes": {"color": "Black Titanium", "storage": "256GB"}
+  }
+]
