@@ -25,3 +25,17 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Python
+.venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local databases
+*.db
+*.sqlite3
+
