@@ -1,0 +1,182 @@
+[
+  {
+    "id": "B001", "name": "Perfect match — Sony XM5 exact",
+    "expected": "MATCH",
+    "ordered": {"title": "Sony WH-1000XM5", "brand": "Sony", "model": "WH-1000XM5", "attributes": {"color": "Black", "quantity": 1}},
+    "received": {"title": "Sony WH-1000XM5 Headphones", "brand": "Sony", "model": "WH-1000XM5", "attributes": {"color": "Black", "quantity": 1}}
+  },
+  {
+    "id": "B002", "name": "Critical — wrong headphone generation XM5 vs XM4",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Sony WH-1000XM5", "brand": "Sony", "model": "WH-1000XM5"},
+    "received": {"title": "Sony WH-1000XM4", "brand": "Sony", "model": "WH-1000XM4"}
+  },
+  {
+    "id": "B003", "name": "Critical — wrong SKU camera body",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Camera Body A1", "sku": "CAM-A1"},
+    "received": {"title": "Camera Body A2", "sku": "CAM-A2"}
+  },
+  {
+    "id": "B004", "name": "Critical — Nike Dunk Low vs Air Force 1",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Nike Dunk Low Panda", "brand": "Nike", "sku": "DD1391-100", "model": "Dunk-Low", "attributes": {"color": "Black/White", "size": "US 10"}},
+    "received": {"title": "Nike Air Force 1 Triple White", "brand": "Nike", "sku": "CW2288-111", "model": "Air-Force-1", "attributes": {"color": "Triple White", "size": "US 10"}}
+  },
+  {
+    "id": "B005", "name": "Critical — wrong smartphone storage variant",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Smartphone 256GB", "model": "Galaxy-Z", "attributes": {"storage": "256GB", "color": "Black"}},
+    "received": {"title": "Smartphone 128GB", "model": "Galaxy-Z", "attributes": {"storage": "128GB", "color": "Black"}}
+  },
+  {
+    "id": "B006", "name": "Major — different brand running shoes",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Nike Air Max 90", "brand": "Nike", "model": "AirMax90", "attributes": {"size": "US 10"}},
+    "received": {"title": "Adidas Ultraboost", "brand": "Adidas", "model": "Ultraboost22", "attributes": {"size": "US 10"}}
+  },
+  {
+    "id": "B007", "name": "Major — quantity short shipment (ordered 2, received 1)",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "USB-C Cable 3-Pack", "model": "USB-C-3PK", "attributes": {"quantity": 3}},
+    "received": {"title": "USB-C Cable", "model": "USB-C-3PK", "attributes": {"quantity": 1}}
+  },
+  {
+    "id": "B008", "name": "Paraphrase — same Sony XM5 different description",
+    "expected": "MATCH",
+    "ordered": {"title": "Sony Noise Cancelling Headphones WH-1000XM5", "brand": "Sony", "model": "WH-1000XM5", "attributes": {"color": "Black"}},
+    "received": {"title": "Sony WH-1000XM5 Wireless Over-Ear Headphones with ANC", "brand": "Sony", "model": "WH-1000XM5", "attributes": {"color": "Black"}}
+  },
+  {
+    "id": "B009", "name": "Paraphrase — same shoe different wording",
+    "expected": "MATCH",
+    "ordered": {"title": "Acme NC-10 Noise Cancelling Headphones", "brand": "Acme", "model": "NC-10"},
+    "received": {"title": "Acme NC-10 Wireless Headphones with Active Noise Cancellation", "brand": "Acme", "model": "NC-10"}
+  },
+  {
+    "id": "B010", "name": "Missing accessory — carrying case absent",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Sony XM5 with Case", "model": "WH-1000XM5", "attributes": {"accessories": ["carrying case", "USB-C cable"]}},
+    "received": {"title": "Sony XM5", "model": "WH-1000XM5", "attributes": {"accessories": ["USB-C cable"]}}
+  },
+  {
+    "id": "B011", "name": "Missing accessory — both cables absent",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Sony XM5 Complete Bundle", "model": "WH-1000XM5", "attributes": {"accessories": ["carrying case", "USB-C cable", "audio cable"]}},
+    "received": {"title": "Sony XM5", "model": "WH-1000XM5", "attributes": {"accessories": []}}
+  },
+  {
+    "id": "B012", "name": "Insufficient evidence — no received product",
+    "expected": "INSUFFICIENT_EVIDENCE",
+    "ordered": {"title": "Laptop 16GB RAM", "model": "LT-16"},
+    "received": null
+  },
+  {
+    "id": "B013", "name": "Insufficient evidence — received product has no attributes",
+    "expected": "INSUFFICIENT_EVIDENCE",
+    "ordered": {"title": "Wireless speaker", "attributes": {"color": "Blue", "model_number": "SPK-100"}},
+    "received": {"title": "Wireless speaker"}
+  },
+  {
+    "id": "B014", "name": "Review — unverified accessories (mentioned in claim only)",
+    "expected": "MANUAL_REVIEW",
+    "ordered": {"title": "Headphones", "model": "HP-1", "attributes": {"accessories": ["case", "cable"]}},
+    "received": {"title": "Headphones", "model": "HP-1"}
+  },
+  {
+    "id": "B015", "name": "Review — vintage watch authenticity disputed",
+    "expected": "MANUAL_REVIEW",
+    "ordered": {"title": "Omega Seamaster 1968 Original Dial", "brand": "Omega", "model": "166.010"},
+    "received": {"title": "Omega Seamaster", "brand": "Omega", "model": "166.010"}
+  },
+  {
+    "id": "B016", "name": "Review — luxury handbag ambiguous condition",
+    "expected": "MANUAL_REVIEW",
+    "ordered": {"title": "Gucci GG Marmont Small Bag", "brand": "Gucci", "model": "GG-Marmont", "attributes": {"condition": "New"}},
+    "received": {"title": "Gucci GG Marmont Small Bag", "brand": "Gucci", "model": "GG-Marmont", "attributes": {"condition": "Like New"}}
+  },
+  {
+    "id": "B017", "name": "Critical — replica detected via model/SKU mismatch",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Gucci GG Marmont Authentic", "brand": "Gucci", "sku": "443497-493075-AUTHENTIC"},
+    "received": {"title": "Gucci GG Marmont", "brand": "Gucci", "sku": "443497-493075-REPLICA-BATCH"}
+  },
+  {
+    "id": "B018", "name": "Match — same laptop exact",
+    "expected": "MATCH",
+    "ordered": {"title": "MacBook Pro 14 M3 Pro", "brand": "Apple", "model": "MK193LL/A", "attributes": {"storage": "512GB", "color": "Space Gray"}},
+    "received": {"title": "Apple MacBook Pro 14 inch M3 Pro Chip", "brand": "Apple", "model": "MK193LL/A", "attributes": {"storage": "512GB", "color": "Space Gray"}}
+  },
+  {
+    "id": "B019", "name": "Critical — laptop storage wrong (512GB vs 256GB)",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "MacBook Pro 14 512GB", "brand": "Apple", "model": "MacBook-Pro-14", "attributes": {"storage": "512GB"}},
+    "received": {"title": "MacBook Pro 14 256GB", "brand": "Apple", "model": "MacBook-Pro-14", "attributes": {"storage": "256GB"}}
+  },
+  {
+    "id": "B020", "name": "Critical — wrong shoe size",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Nike Air Max 90 Black", "brand": "Nike", "model": "AirMax90", "attributes": {"size": "US 10", "color": "Black"}},
+    "received": {"title": "Nike Air Max 90 Black", "brand": "Nike", "model": "AirMax90", "attributes": {"size": "US 11", "color": "Black"}}
+  },
+  {
+    "id": "B021", "name": "Match — same item ordered and received with minor description diff",
+    "expected": "MATCH",
+    "ordered": {"title": "Bose QuietComfort 45 Noise Cancelling", "brand": "Bose", "model": "QC45", "attributes": {"color": "Black"}},
+    "received": {"title": "Bose QC45 Headphones Black", "brand": "Bose", "model": "QC45", "attributes": {"color": "Black"}}
+  },
+  {
+    "id": "B022", "name": "Review — color mismatch minor dispute",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "iPhone 15 Pro", "brand": "Apple", "model": "iPhone15Pro", "attributes": {"color": "Natural Titanium", "storage": "256GB"}},
+    "received": {"title": "iPhone 15 Pro", "brand": "Apple", "model": "iPhone15Pro", "attributes": {"color": "Black Titanium", "storage": "256GB"}}
+  },
+  {
+    "id": "B023", "name": "Insufficient evidence — ordered product only, no claim",
+    "expected": "INSUFFICIENT_EVIDENCE",
+    "ordered": {"title": "Generic Bluetooth Speaker", "model": "SPK-BT-01"},
+    "received": null
+  },
+  {
+    "id": "B024", "name": "Match — gaming console exact",
+    "expected": "MATCH",
+    "ordered": {"title": "PlayStation 5 Disc Edition", "brand": "Sony", "model": "CFI-1215A", "attributes": {"color": "White"}},
+    "received": {"title": "Sony PS5 Disc Version Console White", "brand": "Sony", "model": "CFI-1215A", "attributes": {"color": "White"}}
+  },
+  {
+    "id": "B025", "name": "Critical — PS5 Disc vs PS5 Digital Edition",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "PlayStation 5 Disc Edition", "brand": "Sony", "model": "CFI-1215A"},
+    "received": {"title": "PlayStation 5 Digital Edition", "brand": "Sony", "model": "CFI-1016B"}
+  },
+  {
+    "id": "B026", "name": "Review — watch dial authenticity insufficient evidence",
+    "expected": "MANUAL_REVIEW",
+    "ordered": {"title": "Rolex Submariner Date 2022", "brand": "Rolex", "model": "126610LN"},
+    "received": {"title": "Rolex Submariner", "brand": "Rolex", "model": "126610LN"}
+  },
+  {
+    "id": "B027", "name": "Major — wrong variant sneaker colorway",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "New Balance 550 White Green", "brand": "New Balance", "model": "BB550WT1", "attributes": {"color": "White/Green"}},
+    "received": {"title": "New Balance 550 White Red", "brand": "New Balance", "model": "BB550WR1", "attributes": {"color": "White/Red"}}
+  },
+  {
+    "id": "B028", "name": "Match — smart watch same model variant",
+    "expected": "MATCH",
+    "ordered": {"title": "Apple Watch Series 9 GPS 45mm", "brand": "Apple", "model": "MRMD3LL/A", "attributes": {"color": "Midnight", "size": "45mm"}},
+    "received": {"title": "Apple Watch Series 9 45mm GPS Midnight", "brand": "Apple", "model": "MRMD3LL/A", "attributes": {"color": "Midnight", "size": "45mm"}}
+  },
+  {
+    "id": "B029", "name": "Critical — different smartwatch generation Series 9 vs 8",
+    "expected": "MISMATCH_DETECTED",
+    "ordered": {"title": "Apple Watch Series 9 45mm", "brand": "Apple", "model": "MRMD3LL/A"},
+    "received": {"title": "Apple Watch Series 8 45mm", "brand": "Apple", "model": "MNP12LL/A"}
+  },
+  {
+    "id": "B030", "name": "Review — trading card condition disputed near-mint vs lightly played",
+    "expected": "MANUAL_REVIEW",
+    "ordered": {"title": "Pokemon Charizard Holo First Edition", "model": "PSA-BGS-GRADE", "attributes": {"condition": "Near Mint"}},
+    "received": {"title": "Pokemon Charizard Holo", "model": "PSA-BGS-GRADE", "attributes": {"condition": "Lightly Played"}}
+  }
+]
