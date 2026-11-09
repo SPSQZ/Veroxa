@@ -40,6 +40,10 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30">
                 Escrow AI Sentinel
               </span>
+              <span className="hidden sm:inline-flex items-center space-x-1.5 text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>PayPal Sandbox Connected</span>
+              </span>
             </div>
             <p className="text-xs text-slate-400 hidden sm:block">
               Semantic Product-Matching & Evidence-Led Dispute Resolution
