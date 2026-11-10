@@ -1,0 +1,21 @@
+{
+  "project": "Veroxa",
+  "artifact_type": "audit_trail_template",
+  "warning": "Illustrative synthetic template only. This file is not a live audit log and does not prove that runtime audit persistence is implemented.",
+  "records": [
+    {
+      "event_id": "SYNTHETIC-DEMO-001",
+      "event_type": "matching_demo",
+      "timestamp_utc": "REPLACE_WITH_ACTUAL_TIMESTAMP",
+      "case_id": "SYNTHETIC-CASE-001",
+      "actor": "DEMO_USER",
+      "input_source": "synthetic_demo_data",
+      "action": "matching_analysis_requested",
+      "result_summary": "Illustrative record only; replace with actual runtime event data.",
+      "human_review_required": true,
+      "evidence_references": [],
+      "data_classification": "synthetic",
+      "integrity_note": "Do not treat this example as an actual transaction or dispute record."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "project": "Veroxa",
+  "artifact_type": "traceability_matrix",
+  "note": "Draft mapping based on code excerpts reviewed; verify paths and test names against the integrated repository.",
+  "requirements": [
+    {
+      "id": "REQ-01",
+      "requirement": "Produce a structured product-matching result.",
+      "implementation_reference": "Backend/matching/matching_service.py; Backend/matching/schemas.py",
+      "verification": "Run matching service tests and inspect returned MatchingResult fields.",
+      "status": "implementation observed in reviewed excerpts; full repository verification pending"
+    },
+    {
+      "id": "REQ-02",
+      "requirement": "Evaluate confidence and mismatch severity before recommending an outcome.",
+      "implementation_reference": "Backend/matching/confidence.py",
+      "verification": "Test critical, major, minor, low-confidence, and insufficient-evidence scenarios.",
+      "status": "decision logic observed in reviewed excerpts; test execution not confirmed"
+    },
+    {
+      "id": "REQ-03",
+      "requirement": "Require human review for dispute recommendations.",
+      "implementation_reference": "Backend/matching/schemas.py; Backend/matching/confidence.py",
+      "verification": "Assert requires_human_review is true for all result paths.",
+      "status": "safety invariant observed in reviewed excerpts"
+    },
+    {
+      "id": "REQ-04",
+      "requirement": "Account for conflicting evidence in confidence decisions.",
+      "implementation_reference": "Backend/matching/confidence.py; Backend/matching/matching_service.py",
+      "verification": "Trace has_conflicting_evidence from service input through decide(); add an integration test.",
+      "status": "needs verification: reviewed analyze() call did not pass this argument"
+    },
+    {
+      "id": "REQ-05",
+      "requirement": "Use configurable semantic and attribute weights consistently.",
+      "implementation_reference": "Backend/matching/config.py; Backend/matching/matching_service.py",
+      "verification": "Change config weights in a test and confirm the calculated hybrid score changes accordingly.",
+      "status": "needs verification: reviewed service used fixed 0.35/0.65 weights"
+    },
+    {
+      "id": "REQ-06",
+      "requirement": "Maintain an auditable record of dispute processing.",
+      "implementation_reference": "audit_trail_log.json (illustrative template only)",
+      "verification": "Confirm a durable audit writer exists and test that real events are persisted.",
+      "status": "not confirmed from reviewed code excerpts"
+    },
+    {
+      "id": "REQ-07",
+      "requirement": "Provide a repeatable local demonstration.",
+      "implementation_reference": "live_case_demo_script.py; reproducible_setup_guide.md",
+      "verification": "Run the script from the documented working directory in a clean environment.",
+      "status": "draft; imports and runtime not verified against integrated repository"
+    }
+  ]
+}
