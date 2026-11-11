@@ -1,0 +1,6 @@
+run_id,timestamp_utc,case_id,scenario,retrieval_ms,semantic_match_ms,policy_check_ms,total_ms,top1_match_correct,topk_contains_expected,false_match,human_review_triggered,notes
+SYN-001,2026-11-10T06:00:00Z,TC-001,exact_match,12,38,4,54,1,1,0,0,Synthetic example only; replace with measured runtime data
+SYN-002,2026-11-10T06:00:01Z,TC-002,semantic_equivalence,13,44,5,62,1,1,0,1,Synthetic example only; replace with measured runtime data
+SYN-003,2026-11-10T06:00:02Z,TC-003,material_mismatch,14,47,6,67,1,1,0,1,Synthetic example only; replace with measured runtime data
+SYN-004,2026-11-10T06:00:03Z,TC-005,ambiguous_claim,11,41,5,57,1,1,0,1,Synthetic example only; replace with measured runtime data
+SYN-005,2026-11-10T06:00:04Z,TC-007,conflicting_evidence,15,52,7,74,1,1,0,1,Synthetic example only; replace with measured runtime data
